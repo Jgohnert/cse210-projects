@@ -5,9 +5,9 @@ class Program
     static void Main(string[] args)
     {
         Console.Write("Enter Number: ");
-        string valueFromUser = Console.ReadLine();
+        string value = Console.ReadLine();
 
-        int x = int.Parse(valueFromUser);
+        int x = int.Parse(value);
         int y = 2;
 
         if (x > y)
