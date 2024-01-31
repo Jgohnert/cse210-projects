@@ -5,10 +5,10 @@ public class Entry
     public string _onePrompt = "";
 
     public void Display()
-    {
-        Console.WriteLine(
+{
+    Console.WriteLine(
 $@"Prompt: {_onePrompt}
 Date: {_date}
 Entry: {_userEntry}");
-    }
+}
 }
