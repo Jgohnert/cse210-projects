@@ -7,10 +7,9 @@ class Program
     {
 
         bool entriesLoaded = false;
-
         int chosenNumber = 0;
         Journal journal = new Journal();
-        List<Entry> loadedEntries = new List<Entry>();
+        List<Entry> loadEntries = new List<Entry>();
 
         Console.WriteLine("Welcome to the Journal Program!");
 
@@ -49,9 +48,9 @@ What would you like to do? ");
 
                 if (entriesLoaded)
                 {
-                    foreach (Entry loadedEntry in loadedEntries)
+                    foreach (Entry loadEntry in loadEntries)
                     {
-                        loadedEntry.Display();
+                        loadEntry.Display();
                     }
                 }
 
@@ -67,7 +66,7 @@ What would you like to do? ");
                 string fileName = Console.ReadLine();
 
                 List<Entry> entriesFromFile = journal.LoadFromFile(fileName);
-                loadedEntries.AddRange(entriesFromFile);
+                loadEntries.AddRange(entriesFromFile);
 
                 entriesLoaded = true;
             }
@@ -78,7 +77,7 @@ What would you like to do? ");
                 string fileName = Console.ReadLine();
             
                 List<Entry> saveEntries = new List<Entry>();
-                saveEntries.AddRange(loadedEntries);
+                saveEntries.AddRange(loadEntries);
                 saveEntries.AddRange(journal._entryList);
             
                 journal.SaveFile(fileName, saveEntries);
