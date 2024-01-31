@@ -10,21 +10,21 @@ public class Journal
     {
         foreach (Entry entry in entriesToSave)
         {
-            outputFile.WriteLine($"{entry._date},{entry._onePrompt},{entry._userEntry}");
+            outputFile.WriteLine($"{entry._date}~{entry._onePrompt}~{entry._userEntry}");
         }
     }
 }
 
     public List<Entry> LoadFromFile(string fileName)
     {
-        Console.WriteLine("Journal");
+        Console.WriteLine("Journal successfully loaded");
         List<Entry> savedJournal = new List<Entry>();
 
         string[] lines = System.IO.File.ReadAllLines(fileName);
 
         for (int i = 0; i < lines.Length; i++)
         {
-            string[] values = lines[i].Split(',');
+            string[] values = lines[i].Split('~');
 
             if (values.Length == 3)
             {
