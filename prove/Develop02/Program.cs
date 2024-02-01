@@ -62,6 +62,10 @@ What would you like to do? ");
                 }
             }
 
+            //Below is the code I added. It displays an entry or entries that the user can search by date.
+            //it works by taking the user's searched date to convert it into DateTime so it can be compareed 
+            //to the iterated list of loaded entries. This will allow the program to find and display the date 
+            //with the corresponding entry that the user is looking for.
             else if (chosenNumber == 3)
             {
                 Console.Write("Enter the date of the entry you want to find (MM/DD/YYYY): ");
