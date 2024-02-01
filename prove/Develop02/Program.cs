@@ -1,5 +1,6 @@
 using System;
 using System.Security.Cryptography.X509Certificates;
+using System.Globalization;
 
 class Program
 {
@@ -13,15 +14,16 @@ class Program
 
         Console.WriteLine("Welcome to the Journal Program!");
 
-        while (chosenNumber != 5)
+        while (chosenNumber != 6)
         {
             Console.Write(
 @"Please select one of the following choices:
 1. Write
 2. Display
-3. Load
-4. Save
-5. Quit
+3. Search
+4. Load
+5. Save
+6. Quit
 What would you like to do? ");
             
             string userChoice = Console.ReadLine();
@@ -40,7 +42,6 @@ What would you like to do? ");
                 string userEntry = Console.ReadLine();
 
                 journal._entryList.Add(new Entry{_userEntry = userEntry, _date = dateText, _onePrompt = promptOfTheDay});
-
             }
 
             else if (chosenNumber == 2)
@@ -62,6 +63,35 @@ What would you like to do? ");
 
             else if (chosenNumber == 3)
             {
+                Console.Write("Enter the date of the entry you want to find (MM/DD/YYYY): ");
+                string searchDate = Console.ReadLine();
+
+                if (DateTime.TryParse(searchDate, out DateTime searchedDate))
+                {
+                    List<Entry> entriesSearched = new List<Entry>();
+
+                    foreach (Entry loadEntry in loadEntries)
+                    {
+                        if (loadEntry._date == searchedDate.Date.ToShortDateString())
+                        {
+                            entriesSearched.Add(loadEntry);
+                        }
+                    }
+
+                    foreach (Entry displaySearch in entriesSearched)
+                    {
+                        displaySearch.Display();
+                    }
+                }
+
+                else
+                {
+                    Console.WriteLine("Error.");
+                }
+            }
+
+            else if (chosenNumber == 4)
+            {
                 Console.Write("What is the file name? ");
                 string fileName = Console.ReadLine();
 
@@ -71,7 +101,7 @@ What would you like to do? ");
                 entriesLoaded = true;
             }
 
-            else if (chosenNumber == 4)
+            else if (chosenNumber == 5)
             {
                 Console.Write("What is the file name? ");
                 string fileName = Console.ReadLine();
@@ -80,10 +110,10 @@ What would you like to do? ");
                 saveEntries.AddRange(loadEntries);
                 saveEntries.AddRange(journal._entryList);
             
-                journal.SaveFile(fileName, saveEntries);
+                journal.SaveToFile(fileName, saveEntries);
             }
 
-            else if (chosenNumber == 5)
+            else if (chosenNumber == 6)
             {
                 Console.WriteLine("Good job using the Journal Program today!");
                 break;
