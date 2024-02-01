@@ -10,7 +10,7 @@ public class Prompt
         "What was your favorite activity today?",
     };
     public Random random = new Random();
-
+    
     public string RandomPrompt()
     {
 

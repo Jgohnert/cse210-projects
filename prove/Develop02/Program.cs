@@ -9,10 +9,11 @@ class Program
 
         bool entriesLoaded = false;
         int chosenNumber = 0;
+
         Journal journal = new Journal();
         List<Entry> loadEntries = new List<Entry>();
 
-        Console.WriteLine("Welcome to the Journal Program!");
+        Console.WriteLine("Welcome to your Journal Program!");
 
         while (chosenNumber != 6)
         {
