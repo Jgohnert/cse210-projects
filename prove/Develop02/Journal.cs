@@ -4,12 +4,12 @@ public class Journal
 {
     public List<Entry> _entryList = new List<Entry>();
 
-    public void SaveToFile(string fileName, List<Entry> entriesSaved)
+    public void SaveToFile(string fileName, List<Entry> entriesToSaved)
 {
     using (StreamWriter outputFile = new StreamWriter(fileName))
     {
         Console.WriteLine("File saved.");
-        foreach (Entry entry in entriesSaved)
+        foreach (Entry entry in entriesToSaved)
         {
             outputFile.WriteLine($"{entry._date}~{entry._onePrompt}~{entry._userEntry}");
         }
