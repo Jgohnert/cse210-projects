@@ -119,6 +119,11 @@ What would you like to do? ");
                 Console.WriteLine("Good job using the Journal Program today!");
                 break;
             }
+
+            else if (chosenNumber > 6 || chosenNumber < 1)
+            {
+                Console.WriteLine("Invalid Input");
+            }
         }
     }
 }

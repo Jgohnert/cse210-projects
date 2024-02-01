@@ -10,10 +10,9 @@ public class Prompt
         "What was your favorite activity today?",
     };
     public Random random = new Random();
-    
+
     public string RandomPrompt()
     {
-
         int randomString = random.Next(0, 5);
         
         return _prompts[randomString];
